@@ -35,6 +35,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -46,6 +47,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -57,6 +59,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -68,6 +71,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -112,12 +116,6 @@ export default function RegisterForm() {
     if (education.length === 0) {
       isValid = false
       tempErrors['education'] = true
-    }
-
-    if (profession.length === 0) {
-      isValid = true
-      tempErrors['profession'] = false
-      setProfession('Nuk ka')
     }
 
     setErrors({ ...tempErrors })

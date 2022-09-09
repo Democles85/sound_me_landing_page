@@ -7,11 +7,12 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   const { firstName, lastName, phone, email, address, education, profession } =
     req.body
 
-  const message = {
-    to: 'sixheitartari12@gmail.com',
-    from: 'democleschannel28@gmail.com',
-    subject: 'New Registration',
-    html: `
+  const messages = [
+    {
+      to: 'sixheitartari12@gmail.com',
+      from: 'democleschannel28@gmail.com',
+      subject: 'New Registration',
+      html: `
     <div style="font-size: 16px;">
       <strong>First Name:</strong> ${firstName}<br />
       <strong>Last Name:</strong> ${lastName}<br />
@@ -22,10 +23,30 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>Profession:</strong> ${profession}<br />
     </div>
     `
-  }
+    },
+    {
+      to: email,
+      from: 'democleschannel28@gmail.com',
+      subject: 'Faleminderit për regjistrimin',
+      html: `
+    <div style="font-size: 20px;">
+      <strong>Të dhënat tuaja</strong><br />
+    </div>
+    <div style="font-size: 16px;">
+      <strong>First Name:</strong> ${firstName}<br />
+      <strong>Last Name:</strong> ${lastName}<br />
+      <strong>Phone:</strong>+355 ${phone}<br />
+      <strong>Email:</strong> ${email}<br />
+      <strong>Address:</strong> ${address}<br />
+      <strong>Education:</strong> ${education}<br />
+      <strong>Profession:</strong> ${profession}<br />
+    </div>
+    `
+    }
+  ]
 
   sendgrid
-    .send(message)
+    .send(messages)
     .then((response) => {
       res.status(200).json({ message: 'Email sent successfully' })
       console.log('Message sent successfuly')
