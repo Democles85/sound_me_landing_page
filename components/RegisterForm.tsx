@@ -36,6 +36,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -47,6 +48,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -58,6 +60,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }
@@ -69,6 +72,7 @@ export default function RegisterForm() {
       position: 'top-right',
       autoClose: 5000,
       style: {
+        fontFamily: '"Noto Sans Balinese", sans-serif',
         background: '#3e503c',
         color: '#fff'
       }

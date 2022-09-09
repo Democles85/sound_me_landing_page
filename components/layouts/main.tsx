@@ -15,6 +15,7 @@ export default function Main({ children }: Props) {
         <meta name="description" content="Sound Me contact page." />
         <meta name="author" content="Sixhe Tartari" />
         <meta name="author" content="sixhe tartari" />
+
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -33,8 +34,10 @@ export default function Main({ children }: Props) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="/favicon.ico" />
         <title>Sound Me</title>
       </Head>
       <Container
