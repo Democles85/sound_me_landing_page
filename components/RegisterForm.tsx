@@ -17,13 +17,14 @@ const Asterisk = () => <span style={{ color: '#3e503c' }}>*</span>
 
 export default function RegisterForm() {
   const emailFormat: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  const phoneFormat: RegExp = /^\d{10}$/
+  const phoneFormat: RegExp =
+    /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
-  const [address, setAddress] = useState('')
+  const [birthPlace, setBirthPlace] = useState('')
   const [education, setEducation] = useState('')
   const [profession, setProfession] = useState('')
 
@@ -81,11 +82,17 @@ export default function RegisterForm() {
     if (firstName.length === 0) {
       isValid = false
       tempErrors['firstName'] = true
+    } else if (firstName.length > 20) {
+      isValid = false
+      tempErrors['longFirstName'] = true
     }
 
     if (lastName.length === 0) {
       isValid = false
       tempErrors['lastName'] = true
+    } else if (lastName.length > 20) {
+      isValid = false
+      tempErrors['longLastName'] = true
     }
 
     if (phone.length === 0) {
@@ -104,20 +111,14 @@ export default function RegisterForm() {
       tempErrors['correctEmail'] = true
     }
 
-    if (address.length === 0) {
+    if (birthPlace.length === 0) {
       isValid = false
-      tempErrors['address'] = true
+      tempErrors['birthPlace'] = true
     }
 
     if (education.length === 0) {
       isValid = false
       tempErrors['education'] = true
-    }
-
-    if (profession.length === 0) {
-      isValid = true
-      tempErrors['profession'] = false
-      setProfession('Nuk ka')
     }
 
     setErrors({ ...tempErrors })
@@ -143,7 +144,7 @@ export default function RegisterForm() {
           lastName,
           phone,
           email,
-          address,
+          birthPlace,
           education,
           profession
         })
@@ -171,7 +172,7 @@ export default function RegisterForm() {
         setLastName('')
         setPhone('')
         setEmail('')
-        setAddress('')
+        setBirthPlace('')
         setEducation('')
         setProfession('')
 
@@ -185,7 +186,7 @@ export default function RegisterForm() {
       setLastName('')
       setPhone('')
       setEmail('')
-      setAddress('')
+      setBirthPlace('')
       setEducation('')
       setProfession('')
 
@@ -240,13 +241,17 @@ export default function RegisterForm() {
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                isInvalid={errors['firstName']}
+                isInvalid={errors['firstName'] || errors['longFirstName']}
               />
-              {errors['firstName'] && (
+              {errors['firstName'] ? (
                 <FormHelperText color={'goblinGreen'}>
                   Ju lutem shkruani emrin tuaj.
                 </FormHelperText>
-              )}
+              ) : errors['longFirstName'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Emri juaj nuk mund të jetë më i gjatë se 20 karaktere.
+                </FormHelperText>
+              ) : null}
             </Box>
             <Box w={'inherit'} px={5} py={{ base: 2, md: 0, lg: 0 }}>
               <FormLabel htmlFor={'lastName'}>
@@ -260,13 +265,17 @@ export default function RegisterForm() {
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                isInvalid={errors['lastName']}
+                isInvalid={errors['lastName'] || errors['longLastName']}
               />
-              {errors['lastName'] && (
+              {errors['lastName'] ? (
                 <FormHelperText color={'goblinGreen'}>
                   Ju lutem shkruani mbiemrin tuaj.
                 </FormHelperText>
-              )}
+              ) : errors['longLastName'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Mbiemri juaj nuk mund të jetë më i gjatë se 20 karaktere.
+                </FormHelperText>
+              ) : null}
             </Box>
           </Box>
           <Box w={'100%'} display={'flex'} flexDir={'column'}>
@@ -333,22 +342,22 @@ export default function RegisterForm() {
               )}
             </Box>
             <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'adresa'}>
-                Adresa: <Asterisk />
+              <FormLabel htmlFor={'vendlindja'}>
+                Vendlindja: <Asterisk />
               </FormLabel>
               <Input
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'Tiranë, Komuna e Parisit'}
+                placeholder={'Tiranë'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                isInvalid={errors['address']}
+                value={birthPlace}
+                onChange={(e) => setBirthPlace(e.target.value)}
+                isInvalid={errors['birthPlace']}
               />
-              {errors['address'] && (
+              {errors['birthPlace'] && (
                 <FormHelperText color={'goblinGreen'}>
-                  Ju lutem shkruani adresën tuaj.
+                  Ju lutem shkruani vendlindjen tuaj.
                 </FormHelperText>
               )}
             </Box>
