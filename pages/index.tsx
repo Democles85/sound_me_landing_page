@@ -12,11 +12,17 @@ const Home: NextPage = () => {
   return (
     <Box>
       <Box>
-        <ParagraphHeader>Cilët jemi?</ParagraphHeader>
+        <ParagraphHeader>Kush jemi?</ParagraphHeader>
         <Paragraph>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-          quaerat aut dolor quasi perferendis maiores illum, explicabo est omnis
-          a natus placeat, tempore iusto rem sed aperiam cumque beatae sunt.
+          SoundMe është i përbërë prej disa profesionistesh ne fushen e
+          terapive. Ata kanë background në Psikologji, Parapsikologji, Bodywork,
+          Breathwork, Sound Healing etj.
+        </Paragraph>
+        <ParagraphHeader>Synimi ynë?</ParagraphHeader>
+        <Paragraph>
+          Të përmirësojmë shëndetin dhe mirëqenien, nëpërmjet vetëreflektimit
+          dhe terapive, si dhe të ndërtojmë një komunitet të terapive të
+          ndryshme në Shqipëri, dedikuar të rinjve.
         </Paragraph>
       </Box>
       <Box pt={5}>
