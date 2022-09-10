@@ -5,11 +5,11 @@ import Layout from '../components/layouts/main'
 import Fonts from '../lib/fonts'
 import theme from '../lib/theme'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Fonts />
-      <Layout>
+      <Layout router={router}>
         <Component {...pageProps} />
       </Layout>
     </ChakraProvider>
