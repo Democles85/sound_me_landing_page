@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Box, Container } from '@chakra-ui/react'
 import Header from '../Header'
+import Footer from '../Footer'
 
 type Props = {
   children: JSX.Element
@@ -37,6 +38,8 @@ export default function Main({ children }: Props) {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/images/logo.png" />
 
         <title>Sound Me</title>
       </Head>
@@ -47,6 +50,7 @@ export default function Main({ children }: Props) {
       >
         <Header />
         {children}
+        <Footer />
       </Container>
     </Box>
   )

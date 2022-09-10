@@ -1,6 +1,12 @@
 import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import { Paragraph, ParagraphHeader, RegisterForm } from '../components'
+import {
+  ContactUs,
+  FindUs,
+  Paragraph,
+  ParagraphHeader,
+  RegisterForm
+} from '../components'
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +22,8 @@ const Home: NextPage = () => {
       <Box pt={5}>
         <ParagraphHeader>Regjistrohu:</ParagraphHeader>
         <RegisterForm />
+        <FindUs />
+        <ContactUs />
       </Box>
     </Box>
   )
