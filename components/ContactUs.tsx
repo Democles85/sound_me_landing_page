@@ -1,10 +1,11 @@
-import { Box, Button, Icon, Text } from '@chakra-ui/react'
+import { Box, Button, Icon, Link, Text } from '@chakra-ui/react'
 import ParagraphHeader from './ParagraphHeader'
-import { AiOutlineInstagram, AiOutlineFacebook } from 'react-icons/ai'
+import { AiFillInstagram } from 'react-icons/ai'
+import { MdMail, MdFacebook } from 'react-icons/md'
 
 export default function ContactUs() {
   return (
-    <Box py={5}>
+    <Box pt={5} pb={'3rem'}>
       <ParagraphHeader>Kontakti:</ParagraphHeader>
 
       <Box display={'flex'} flexDir={{ base: 'column', md: 'row', lg: 'row' }}>
@@ -15,15 +16,9 @@ export default function ContactUs() {
               color={'goblinGreen'}
               _hover={{ bg: 'oliveGreen', color: '#fff' }}
               _focus={{ boxShadow: 'none' }}
+              leftIcon={<Icon as={AiFillInstagram} />}
             >
-              <Box display={'flex'}>
-                <Box pr={1}>
-                  <Icon as={AiOutlineInstagram} />
-                </Box>
-                <Box>
-                  <Text>@soundmeyouth</Text>
-                </Box>
-              </Box>
+              @soundmeyouth
             </Button>
           </a>
         </Box>
@@ -38,17 +33,25 @@ export default function ContactUs() {
               color={'goblinGreen'}
               _hover={{ bg: 'oliveGreen', color: '#fff' }}
               _focus={{ boxShadow: 'none' }}
+              leftIcon={<Icon as={MdFacebook} />}
             >
-              <Box display={'flex'}>
-                <Box pr={1}>
-                  <Icon as={AiOutlineFacebook} />
-                </Box>
-                <Box>
-                  <Text>@soundme</Text>
-                </Box>
-              </Box>
+              @soundme
             </Button>
           </a>
+        </Box>
+
+        <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
+          <Link href="mailto:soundme01@gmail.com" target="_blank">
+            <Button
+              bg={'rgba(143, 152, 125, 0.3)'}
+              color={'goblinGreen'}
+              _hover={{ bg: 'oliveGreen', color: '#fff' }}
+              _focus={{ boxShadow: 'none' }}
+              leftIcon={<Icon as={MdMail} />}
+            >
+              @soundmegmail
+            </Button>
+          </Link>
         </Box>
       </Box>
     </Box>
