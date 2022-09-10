@@ -1,17 +1,24 @@
 import {
+  AspectRatio,
   Box,
   Button,
   Container,
   FormControl,
   FormHelperText,
   FormLabel,
+  Icon,
   Input,
   InputGroup,
-  InputLeftAddon
+  InputLeftAddon,
+  List,
+  ListItem,
+  Text
 } from '@chakra-ui/react'
+import { AiOutlineInstagram, AiOutlineFacebook } from 'react-icons/ai'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
+import ParagraphHeader from './ParagraphHeader'
 
 const Asterisk = () => <span style={{ color: '#3e503c' }}>*</span>
 
@@ -413,7 +420,7 @@ export default function RegisterForm() {
               <Button
                 bg={'oliveGreen'}
                 color={'goblinGreen'}
-                _hover={{ bg: 'goblinGreen', color: 'oliveGreen' }}
+                _hover={{ bg: 'goblinGreen', color: '#fff' }}
                 _focus={{ boxShadow: 'none' }}
                 w={{ base: '60%', md: '50%', lg: '40%' }}
                 type={'submit'}
@@ -424,6 +431,77 @@ export default function RegisterForm() {
           </Box>
         </FormControl>
       </form>
+
+      {/* Ku mund te na gjeni */}
+      <Box pt={5}>
+        <ParagraphHeader>Ku mund të na gjeni:</ParagraphHeader>
+      </Box>
+      <AspectRatio ratio={16 / 9}>
+        <Box as={AspectRatio}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.56417734895!2d19.8157647!3d41.3183438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135031eb76d1122d%3A0x44de4b3c6e138878!2sSound%20Me!5e0!3m2!1sen!2s!4v1662815397384!5m2!1sen!2s"
+            width={'100%'}
+            height={'600'}
+            allowFullScreen={true}
+            loading="lazy"
+            style={{ border: '2px solid #3e503c', borderRadius: '10px' }}
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </Box>
+      </AspectRatio>
+
+      {/* Kontakti */}
+      <Box pt={5}>
+        <ParagraphHeader>Kontakti:</ParagraphHeader>
+
+        <Box
+          display={'flex'}
+          flexDir={{ base: 'column', md: 'row', lg: 'row' }}
+        >
+          <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
+            <a href="https://www.instagram.com/soundmeyouth/" target="__blank">
+              <Button
+                bg={'rgba(143, 152, 125, 0.3)'}
+                color={'goblinGreen'}
+                _hover={{ bg: 'oliveGreen', color: '#fff' }}
+                _focus={{ boxShadow: 'none' }}
+              >
+                <Box display={'flex'}>
+                  <Box pr={1}>
+                    <Icon as={AiOutlineInstagram} />
+                  </Box>
+                  <Box>
+                    <Text>@soundmeyouth</Text>
+                  </Box>
+                </Box>
+              </Button>
+            </a>
+          </Box>
+
+          <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
+            <a
+              href="https://www.facebook.com/Sound-Me-110440398473173/?ref=page_internal"
+              target="__blank"
+            >
+              <Button
+                bg={'rgba(143, 152, 125, 0.3)'}
+                color={'goblinGreen'}
+                _hover={{ bg: 'oliveGreen', color: '#fff' }}
+                _focus={{ boxShadow: 'none' }}
+              >
+                <Box display={'flex'}>
+                  <Box pr={1}>
+                    <Icon as={AiOutlineFacebook} />
+                  </Box>
+                  <Box>
+                    <Text>@soundme</Text>
+                  </Box>
+                </Box>
+              </Button>
+            </a>
+          </Box>
+        </Box>
+      </Box>
     </Container>
   )
 }
