@@ -50,8 +50,8 @@ export default function Main({ children }: Props) {
       >
         <Header />
         {children}
-        <Footer />
       </Container>
+      <Footer />
     </Box>
   )
 }

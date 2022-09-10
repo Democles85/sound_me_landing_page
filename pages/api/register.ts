@@ -4,8 +4,15 @@ import { NextApiRequest, NextApiResponse } from 'next'
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
-  const { firstName, lastName, phone, email, address, education, profession } =
-    req.body
+  const {
+    firstName,
+    lastName,
+    phone,
+    email,
+    birthPlace,
+    education,
+    profession
+  } = req.body
 
   const messages = [
     {
@@ -18,7 +25,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Phone:</strong>+355 ${phone}<br />
       <strong>Email:</strong> ${email}<br />
-      <strong>Address:</strong> ${address}<br />
+      <strong>Birth Place:</strong> ${birthPlace}<br />
       <strong>Education:</strong> ${education}<br />
       <strong>Profession:</strong> ${profession}<br />
     </div>
@@ -37,7 +44,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Phone:</strong>+355 ${phone}<br />
       <strong>Email:</strong> ${email}<br />
-      <strong>Address:</strong> ${address}<br />
+      <strong>Birth Place:</strong> ${birthPlace}<br />
       <strong>Education:</strong> ${education}<br />
       <strong>Profession:</strong> ${profession}<br />
     </div>

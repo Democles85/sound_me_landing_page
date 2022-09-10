@@ -11,13 +11,15 @@ import {
 const Home: NextPage = () => {
   return (
     <Box>
-      <Box>
+      <Box pb={5}>
         <ParagraphHeader>Kush jemi?</ParagraphHeader>
         <Paragraph>
-          SoundMe është i përbërë prej disa profesionistesh ne fushen e
+          SoundMe është i përbërë prej disa profesionistësh në fushën e
           terapive. Ata kanë background në Psikologji, Parapsikologji, Bodywork,
           Breathwork, Sound Healing etj.
         </Paragraph>
+      </Box>
+      <Box pb={5}>
         <ParagraphHeader>Synimi ynë?</ParagraphHeader>
         <Paragraph>
           Të përmirësojmë shëndetin dhe mirëqenien, nëpërmjet vetëreflektimit
@@ -25,6 +27,7 @@ const Home: NextPage = () => {
           ndryshme në Shqipëri, dedikuar të rinjve.
         </Paragraph>
       </Box>
+
       <Box pt={5}>
         <ParagraphHeader>Regjistrohu:</ParagraphHeader>
         <RegisterForm />

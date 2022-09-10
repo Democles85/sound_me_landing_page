@@ -154,6 +154,25 @@ export default function RegisterForm() {
         })
       })
 
+      const db_res = await fetch('/api/addUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          phone,
+          email,
+          birthPlace,
+          education,
+          profession
+        })
+      })
+
+      const data = await db_res.json()
+      console.log(data)
+
       // console.table(
       //   JSON.stringify({
       //     firstName,
