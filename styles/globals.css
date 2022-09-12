@@ -10,3 +10,16 @@ body {
   background: #8f987d;
   color: #fff;
 }
+
+.react-multi-carousel-list .arrow-btn {
+  transition: width 300ms ease;
+  width: 50px;
+}
+.react-multi-carousel-list .arrow-btn:hover {
+  width: 60px;
+}
+
+.carousel-px4 {
+  padding-left: 6px;
+  padding-right: 6px;
+}

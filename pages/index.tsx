@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import {
   ContactUs,
+  Events,
   FindUs,
   Paragraph,
   ParagraphHeader,
@@ -11,7 +12,7 @@ import {
 const Home: NextPage = () => {
   return (
     <Box>
-      <Box pb={5}>
+      <Box pb={'2rem'}>
         <ParagraphHeader>Kush jemi?</ParagraphHeader>
         <Paragraph>
           SoundMe është i përbërë prej disa profesionistësh në fushën e
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
           Breathwork, Sound Healing etj.
         </Paragraph>
       </Box>
-      <Box pb={5}>
+      <Box pb={'2rem'}>
         <ParagraphHeader>Synimi ynë?</ParagraphHeader>
         <Paragraph>
           Të përmirësojmë shëndetin dhe mirëqenien, nëpërmjet vetëreflektimit
@@ -28,7 +29,11 @@ const Home: NextPage = () => {
         </Paragraph>
       </Box>
 
-      <Box pt={5}>
+      <Box pb={'2rem'}>
+        <Events />
+      </Box>
+
+      <Box>
         <ParagraphHeader>Regjistrohu:</ParagraphHeader>
         <RegisterForm />
         <FindUs />
