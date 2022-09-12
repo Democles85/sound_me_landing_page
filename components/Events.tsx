@@ -1,5 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Box, Text, Image } from '@chakra-ui/react'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import ParagraphHeader from './ParagraphHeader'
@@ -87,14 +86,35 @@ export default function Events() {
       <ParagraphHeader>Evente: </ParagraphHeader>
       <Box mb={'2rem'}>
         <Carousel
-          infinite
+          infinite={false}
           customLeftArrow={customLeftArrow}
           customRightArrow={customRightArrow}
           responsive={responsive}
           itemClass={'carousel-px4'}
         >
-          <Box h={'560px'} w={'100%'} bg={'red'} borderRadius={'lg'} p={'2rem'}>
-            <Text>Event One</Text>
+          <Box
+            h={'560px'}
+            w={'100%'}
+            bg={'linear-gradient(to top, #3e503c 10%, #8f987d 100%)'}
+            borderRadius={'lg'}
+            border={'1px solid #3e503c'}
+            p={'2rem'}
+            color={'#fff'}
+          >
+            <Image
+              src={'/images/logo.png'}
+              alt={'logo'}
+              width={'100%'}
+              borderTopRadius={'lg'}
+            />
+            <Box mt={'1rem'}>
+              <Text fontSize={'18px'} fontWeight={'semibold'}>
+                The Balance of You Mind
+              </Text>
+              <Text style={{ textIndent: '1rem' }}>
+                E Shtune, Tetor 10 • 11:00
+              </Text>
+            </Box>
           </Box>
         </Carousel>
       </Box>
