@@ -19,9 +19,27 @@ export default function RegisterForm() {
   const emailFormat: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   const phoneFormat: RegExp =
     /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
+  const ages = [
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29'
+  ]
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [age, setAge] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [birthPlace, setBirthPlace] = useState('')
@@ -99,6 +117,14 @@ export default function RegisterForm() {
       tempErrors['longLastName'] = true
     }
 
+    if (age.length === 0) {
+      isValid = false
+      tempErrors['age'] = true
+    } else if (!ages.includes(age)) {
+      isValid = false
+      tempErrors['invalidAge'] = true
+    }
+
     if (phone.length === 0) {
       isValid = false
       tempErrors['phone'] = true
@@ -146,6 +172,7 @@ export default function RegisterForm() {
         body: JSON.stringify({
           firstName,
           lastName,
+          age,
           phone,
           email,
           birthPlace,
@@ -162,6 +189,7 @@ export default function RegisterForm() {
         body: JSON.stringify({
           firstName,
           lastName,
+          age,
           phone,
           email,
           birthPlace,
@@ -170,8 +198,8 @@ export default function RegisterForm() {
         })
       })
 
-      const data = await db_res.json()
-      console.log(data)
+      // const data = await db_res.json()
+      // console.log(data)
 
       // console.table(
       //   JSON.stringify({
@@ -193,6 +221,7 @@ export default function RegisterForm() {
 
         setFirstName('')
         setLastName('')
+        setAge('')
         setPhone('')
         setEmail('')
         setBirthPlace('')
@@ -207,6 +236,7 @@ export default function RegisterForm() {
 
       setFirstName('')
       setLastName('')
+      setAge('')
       setPhone('')
       setEmail('')
       setBirthPlace('')
@@ -303,7 +333,32 @@ export default function RegisterForm() {
           </Box>
           <Box w={'100%'} display={'flex'} flexDir={'column'}>
             <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'email'}>
+              <FormLabel htmlFor={'age'}>
+                Mosha: <Asterisk />
+              </FormLabel>
+              <Input
+                borderColor={'goblinGreen'}
+                _hover={{ borderColor: 'oliveGreen' }}
+                focusBorderColor={'goblinGreen'}
+                placeholder={'20'}
+                _placeholder={{ color: 'oliveGreen', opacity: 1 }}
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                isInvalid={errors['age'] || errors['invalidAge']}
+              />
+              {errors['age'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Ju lutem shkruani moshen tuaj.
+                </FormHelperText>
+              ) : errors['invalidAge'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Mosha juaj nuk mund të jetë më e vogël se 15 dhe më e madhe se
+                  29.
+                </FormHelperText>
+              ) : null}
+            </Box>
+            <Box w={'inherit'} px={5} pt={2}>
+              <FormLabel htmlFor={'phone'}>
                 Numër telefoni: <Asterisk />
               </FormLabel>
               <InputGroup>

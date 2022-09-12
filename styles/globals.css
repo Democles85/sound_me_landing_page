@@ -23,19 +23,3 @@ body {
   padding-left: 6px;
   padding-right: 6px;
 }
-
-.event-image {
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.event-image:hover {
-  border-radius: 5%;
-  /* filter: blur(1px); */
-}
-
-@media screen and (max-width: 768px) {
-  .event-image {
-    border-radius: 5%;
-  }
-}

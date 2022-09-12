@@ -6,6 +6,7 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
   const {
     firstName,
     lastName,
+    age,
     phone,
     email,
     birthPlace,
@@ -18,6 +19,7 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
   const user = await User.create({
     firstName,
     lastName,
+    age,
     phone,
     email,
     birthPlace,
