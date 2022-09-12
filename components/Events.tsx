@@ -29,7 +29,7 @@ export default function Events() {
       position={'absolute'}
       left={0}
       cursor={'pointer'}
-      bg={'rgba(143, 152, 125, 0.8)'}
+      bg={'rgba(143, 152, 125, 0.6)'}
       border={'2px solid rgba(255, 255, 255, 0.5)'}
       p={3}
       rounded={'full'}
@@ -58,7 +58,7 @@ export default function Events() {
       position={'absolute'}
       right={'0'}
       cursor={'pointer'}
-      bg={'rgba(143, 152, 125, 0.8)'}
+      bg={'rgba(143, 152, 125, 0.6)'}
       border={'2px solid rgba(255, 255, 255, 0.5)'}
       p={3}
       rounded={'full'}

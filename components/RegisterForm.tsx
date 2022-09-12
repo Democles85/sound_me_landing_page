@@ -260,7 +260,7 @@ export default function RegisterForm() {
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'John'}
+                placeholder={'Sound'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -284,7 +284,7 @@ export default function RegisterForm() {
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'Doe'}
+                placeholder={'Me'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -347,7 +347,7 @@ export default function RegisterForm() {
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'johndoe@gmail.com'}
+                placeholder={'soundme@gmail.com'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -392,7 +392,7 @@ export default function RegisterForm() {
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'Master i Inxhinierisë Elektrike'}
+                placeholder={'Master in Holistic Therapy'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={education}
                 onChange={(e) => setEducation(e.target.value)}
@@ -416,7 +416,7 @@ export default function RegisterForm() {
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'Inxhinier Elektrik'}
+                placeholder={'Holistic Therapist'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
                 value={profession}
                 onChange={(e) => setProfession(e.target.value)}

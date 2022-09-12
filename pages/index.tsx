@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         <Paragraph>
           Të përmirësojmë shëndetin dhe mirëqenien, nëpërmjet vetëreflektimit
           dhe terapive, si dhe të ndërtojmë një komunitet të terapive të
-          ndryshme në Shqipëri, dedikuar të rinjve.
+          ndryshme në Shqipëri, dedikuar të rinjve, mosha nga 15 - 29 vjeç.
         </Paragraph>
       </Box>
 
