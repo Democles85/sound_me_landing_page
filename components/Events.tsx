@@ -72,7 +72,11 @@ export default function Events() {
           src={'/images/balance_of_mind.png'}
           alt={'Balance of Mind'}
           w={{ base: '100%', md: '100%', lg: '30%' }}
-          borderTopRadius={'lg'}
+          borderRadius={{
+            base: '10px 10px 0 0',
+            md: '10px 0 0 10px',
+            lg: '10px 0 0 10px'
+          }}
           boxShadow={'3px 3px 0 0 rgba(143, 152, 125, 0.8)'}
         />
 
@@ -106,7 +110,7 @@ export default function Events() {
             fontSize={{ base: '1rem', md: '1.2rem', lg: '1.2rem' }}
             my={{ base: '1rem', md: '0', lg: '0' }}
           >
-            <Text>Saturday, October 1 2022 • 11:00AM</Text>
+            <Text>Coming Soon... </Text>
             <Text>By expert, Pëllumb Mukaj</Text>
           </Box>
           <Box
