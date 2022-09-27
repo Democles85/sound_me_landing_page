@@ -20,47 +20,6 @@ export default function Events() {
       <Box>
         <ParagraphHeader>Eventet:</ParagraphHeader>
       </Box>
-
-      {/* <Box>
-          <Image
-            src={'/images/balance_of_mind.png'}
-            alt={'Balance of Mind'}
-            w={{ base: '100%', md: '100%', lg: '30%' }}
-            className={'event-image'}
-            onClick={onToggle}
-            _hover={{ cursor: 'pointer', filter: 'blur(1px)' }}
-            borderRadius={'lg'}
-          />
-        </Box>
-
-        <Button
-          display={{ base: 'block', md: 'none', lg: 'none' }}
-          position={'relative'}
-          top={'-15px'}
-          left={'44%'}
-          bg={'oliveGreen'}
-          color={'goblinGreen'}
-          _hover={{ bg: 'goblinGreen', color: '#fff' }}
-          _focus={{ boxShadow: 'none' }}
-          onClick={onToggle}
-        >
-          <Icon as={StatDownArrow} />
-        </Button>
-        <Collapse in={isOpen} animateOpacity>
-          <Box
-            p="40px"
-            color="white"
-            mt="4"
-            bg="oliveGreen"
-            rounded="md"
-            shadow="md"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-            dignissimos natus cumque laboriosam aliquam autem, enim ea deleniti
-            saepe culpa illo id excepturi voluptatem aut magni earum? Autem,
-            aliquam aperiam.
-          </Box>
-        </Collapse> */}
       <Box
         display={'flex'}
         flexDir={{ base: 'column', md: 'row', lg: 'row' }}
@@ -111,7 +70,6 @@ export default function Events() {
             my={{ base: '1rem', md: '0', lg: '0' }}
           >
             <Text>Coming Soon... </Text>
-            <Text>By expert, Pëllumb Mukaj</Text>
           </Box>
           <Box
             fontSize={{ base: '1rem', md: '1.2rem', lg: '1.2rem' }}
