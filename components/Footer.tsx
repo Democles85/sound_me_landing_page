@@ -1,4 +1,4 @@
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Box, Container, Image, Text } from '@chakra-ui/react'
 
 export default function Footer() {
   return (
@@ -23,6 +23,12 @@ export default function Footer() {
               dhe në asnjë mënyrë nuk mund të konsiderohet si qëndrim i
               Kongresit Rinor Kombëtar apo Bashkisë Tiranë”
             </Text>
+            <Box>
+              <Image
+                src={'/images/logo_e_zeze.png'}
+                alt={'Logo e Tirana Kryeqyteti Evropian i Rinisë 2022'}
+              />
+            </Box>
           </Box>
         </Box>
         <Box
