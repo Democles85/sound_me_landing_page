@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         <Paragraph>
           SoundMe është i përbërë prej disa profesionistësh në fushën e terapive
           Holistice. Ata kanë background në Psikologji, Parapsikologji,
-          Bodywork, Breathwork, Sound Healing etj.
+          Bodywork, Breathwork, Realese Trauma, Yoga, Sound Healing, etj.
         </Paragraph>
       </Box>
       <Box pb={'2rem'}>
