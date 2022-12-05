@@ -5,6 +5,9 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   const { firstName, lastName, age, date, email } = req.body
+  const dateLabelMap = date.map((d: any) => {
+    return d.label
+  })
 
   const messages = [
     {
@@ -16,28 +19,28 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>First Name:</strong> ${firstName}<br />
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
-      <strong>Dates: </strong> ${date.label} <br />
+      <strong>Dates: </strong> ${dateLabelMap} <br />
+      <strong>Email:</strong> ${email}<br />
+    </div>
+    `
+    },
+    {
+      to: email,
+      from: 'soundme01@gmail.com',
+      subject: 'Faleminderit për regjistrimin',
+      html: `
+    <div style="font-size: 20px;">
+      <strong>Të dhënat tuaja</strong><br />
+    </div>
+    <div style="font-size: 16px;">
+      <strong>First Name:</strong> ${firstName}<br />
+      <strong>Last Name:</strong> ${lastName}<br />
+      <strong>Age: </strong> ${age}<br />
+      <strong>Dates: </strong> ${dateLabelMap} <br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `
     }
-    // {
-    //   to: email,
-    //   from: 'soundme01@gmail.com',
-    //   subject: 'Faleminderit për regjistrimin',
-    //   html: `
-    // <div style="font-size: 20px;">
-    //   <strong>Të dhënat tuaja</strong><br />
-    // </div>
-    // <div style="font-size: 16px;">
-    //   <strong>First Name:</strong> ${firstName}<br />
-    //   <strong>Last Name:</strong> ${lastName}<br />
-    //   <strong>Age: </strong> ${age}<br />
-    //   <strong>Dates: </strong> ${date.label} <br />
-    //   <strong>Email:</strong> ${email}<br />
-    // </div>
-    // `
-    // }
   ]
 
   sendgrid

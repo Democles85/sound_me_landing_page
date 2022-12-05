@@ -12,7 +12,7 @@ import {
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 // React
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 // ATCB
 import { atcb_init } from 'add-to-calendar-button'
 import 'add-to-calendar-button/assets/css/atcb.css'
@@ -33,6 +33,8 @@ export default function RegisterForm() {
   const [age, setAge] = useState<number>()
   const [date, setDate] = useState<DateOptions[]>([])
   const [email, setEmail] = useState('')
+
+  console.log(date.map((d) => d.label))
 
   const [errors, setErrors] = useState({}) as any
   const [buttonText, setButtonText] = useState('Regjistrohu')
@@ -341,15 +343,27 @@ export default function RegisterForm() {
                 Data: <Asterisk />
               </FormLabel>
               <Select<DateOptions, true>
+                isMulti
                 options={[
                   {
-                    label: '8 December 2022 - 10 December 2022',
-                    value: '08-12-2022 - 10-12-2022'
+                    label: '8 December 2022',
+                    value: '08-12-2022'
                   },
                   {
-                    label:
-                      '11 December 2022 - 17 December 2022 - 18 December 2022',
-                    value: '11-12-2022 - 17-12-2022 - 18-12-2022'
+                    label: '10 December 2022',
+                    value: '10-12-2022'
+                  },
+                  {
+                    label: '11 December 2022',
+                    value: '11-12-2022'
+                  },
+                  {
+                    label: '17 December 2022',
+                    value: '17-12-2022'
+                  },
+                  {
+                    label: '18 December 2022',
+                    value: '18-12-2022'
                   }
                 ]}
                 isInvalid={errors['date']}
