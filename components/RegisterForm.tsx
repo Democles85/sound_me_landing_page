@@ -34,7 +34,7 @@ export default function RegisterForm() {
   const [date, setDate] = useState<DateOptions[]>([])
   const [email, setEmail] = useState('')
 
-  console.log(date.map((d) => d.label))
+  // console.log(date.map((d) => d.label))
 
   const [errors, setErrors] = useState({}) as any
   const [buttonText, setButtonText] = useState('Regjistrohu')
