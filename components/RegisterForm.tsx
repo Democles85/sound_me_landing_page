@@ -372,12 +372,12 @@ export default function RegisterForm() {
                   }),
                   option: (prev, { isFocused }) => ({
                     ...prev,
-                    backgroundColor: isFocused ? 'orange' : '#8f987d',
+                    backgroundColor: isFocused ? 'goblinGreen' : 'marbleWhite',
                     color: isFocused ? '#ffffff' : undefined
                   }),
                   menu: (prev) => ({
                     ...prev,
-                    background: '#8f987d',
+                    background: 'marbleWhite',
                     color: '#3e503c',
                     border: '1px solid #3e503c',
                     borderRadius: 'lg',
