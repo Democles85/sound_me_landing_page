@@ -11,6 +11,7 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
     firstName,
     lastName,
     age,
+    date,
     email
   })
 
