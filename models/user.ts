@@ -3,34 +3,21 @@ import { Schema, model, models } from 'mongoose'
 const UserSchema = new Schema({
   firstName: {
     type: String,
-    required: true
+    required: false
   },
   lastName: {
     type: String,
-    required: true
+    required: false
   },
   age: {
     type: String,
-    required: true
-  },
-  phone: {
-    type: String,
-    required: true
+    required: false
   },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: false
   },
-  birthPlace: {
-    type: String,
-    required: true
-  },
-  education: {
-    type: String,
-    required: true
-  },
-  profession: {
+  date: {
     type: String,
     required: false
   }

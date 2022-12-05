@@ -20,26 +20,31 @@ export default function Events() {
       <Box>
         <ParagraphHeader>Eventet:</ParagraphHeader>
       </Box>
-      <Box
-        display={'flex'}
-        flexDir={{ base: 'column', md: 'row', lg: 'row' }}
-        bg={'rgba(143, 152, 125, 0.3)'}
-        p={{ base: '1rem', md: '1rem', lg: '1rem' }}
-        borderRadius={'lg'}
-      >
-        <Image
-          src={'/images/balance_of_mind.png'}
-          alt={'Balance of Mind'}
-          w={{ base: '100%', md: '100%', lg: '30%' }}
-          borderRadius={{
-            base: '10px 10px 0 0',
-            md: '10px 0 0 10px',
-            lg: '10px 0 0 10px'
-          }}
-          boxShadow={'3px 3px 0 0 rgba(143, 152, 125, 0.8)'}
-        />
-
+      <Box display={'flex'} justifyContent={'center'}>
         <Box
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          flexDir={{ base: 'column', md: 'row', lg: 'row' }}
+          // bg={'rgba(143, 152, 125, 0.2)'}
+          p={{ base: '1rem', md: '1rem', lg: '1rem' }}
+          w={{ base: '100%', md: '60%', lg: '50%' }}
+          borderRadius={'lg'}
+        >
+          <Image
+            src={'/images/banner.png'}
+            alt={'Balance of Mind'}
+            w={'100%'}
+            borderRadius={{
+              base: '10px 10px 0 0',
+              md: '10px 0 0 10px',
+              lg: '10px 0 0 10px'
+            }}
+            boxShadow={'0 0 0 5px rgba(143, 152, 125, 0.8)'}
+          />
+        </Box>
+
+        {/* <Box
           pl={{ base: '1rem', md: '3rem', lg: '3rem' }}
           w={{ base: '95%', md: '100%', lg: '80%' }}
           display={'flex'}
@@ -82,7 +87,7 @@ export default function Events() {
               <a>Location: Rruga Abdyl Frashëri, Tiranë</a>
             </Text>
           </Box>
-        </Box>
+        </Box> */}
       </Box>
       {/* <Divider style={{ borderColor: '#000' }} mt={'1rem'} /> */}
     </Box>

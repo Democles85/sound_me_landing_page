@@ -4,20 +4,11 @@ import { NextApiRequest, NextApiResponse } from 'next'
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
-  const {
-    firstName,
-    lastName,
-    age,
-    phone,
-    email,
-    birthPlace,
-    education,
-    profession
-  } = req.body
+  const { firstName, lastName, age, date, email } = req.body
 
   const messages = [
     {
-      to: 'sixheitartari12@gmail.com',
+      to: 'soundme01@gmail.com',
       from: 'democleschannel28@gmail.com',
       subject: 'New Registration',
       html: `
@@ -25,34 +16,28 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>First Name:</strong> ${firstName}<br />
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
-      <strong>Phone:</strong>+355 ${phone}<br />
+      <strong>Dates: </strong> ${date.label} <br />
       <strong>Email:</strong> ${email}<br />
-      <strong>Birth Place:</strong> ${birthPlace}<br />
-      <strong>Education:</strong> ${education}<br />
-      <strong>Profession:</strong> ${profession}<br />
-    </div>
-    `
-    },
-    {
-      to: email,
-      from: 'democleschannel28@gmail.com',
-      subject: 'Faleminderit për regjistrimin',
-      html: `
-    <div style="font-size: 20px;">
-      <strong>Të dhënat tuaja</strong><br />
-    </div>
-    <div style="font-size: 16px;">
-      <strong>First Name:</strong> ${firstName}<br />
-      <strong>Last Name:</strong> ${lastName}<br />
-      <strong>Age: </strong> ${age}<br />
-      <strong>Phone:</strong>+355 ${phone}<br />
-      <strong>Email:</strong> ${email}<br />
-      <strong>Birth Place:</strong> ${birthPlace}<br />
-      <strong>Education:</strong> ${education}<br />
-      <strong>Profession:</strong> ${profession}<br />
     </div>
     `
     }
+    // {
+    //   to: email,
+    //   from: 'soundme01@gmail.com',
+    //   subject: 'Faleminderit për regjistrimin',
+    //   html: `
+    // <div style="font-size: 20px;">
+    //   <strong>Të dhënat tuaja</strong><br />
+    // </div>
+    // <div style="font-size: 16px;">
+    //   <strong>First Name:</strong> ${firstName}<br />
+    //   <strong>Last Name:</strong> ${lastName}<br />
+    //   <strong>Age: </strong> ${age}<br />
+    //   <strong>Dates: </strong> ${date.label} <br />
+    //   <strong>Email:</strong> ${email}<br />
+    // </div>
+    // `
+    // }
   ]
 
   sendgrid

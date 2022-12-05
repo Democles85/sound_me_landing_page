@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   Box,
   Button,
@@ -5,46 +6,33 @@ import {
   FormControl,
   FormHelperText,
   FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon
+  Input
 } from '@chakra-ui/react'
+// React Toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useState } from 'react'
+// React
+import { useEffect, useState } from 'react'
+// ATCB
+import { atcb_init } from 'add-to-calendar-button'
+import 'add-to-calendar-button/assets/css/atcb.css'
+import { Select, OptionBase } from 'chakra-react-select'
 
 const Asterisk = () => <span style={{ color: '#3e503c' }}>*</span>
 
+interface DateOptions extends OptionBase {
+  label: string
+  value: string
+}
+
 export default function RegisterForm() {
   const emailFormat: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  const phoneFormat: RegExp =
-    /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/
-  const ages = [
-    '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20',
-    '21',
-    '22',
-    '23',
-    '24',
-    '25',
-    '26',
-    '27',
-    '28',
-    '29'
-  ]
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [age, setAge] = useState('')
-  const [phone, setPhone] = useState('')
+  const [age, setAge] = useState<number>()
+  const [date, setDate] = useState<DateOptions[]>([])
   const [email, setEmail] = useState('')
-  const [birthPlace, setBirthPlace] = useState('')
-  const [education, setEducation] = useState('')
-  const [profession, setProfession] = useState('')
 
   const [errors, setErrors] = useState({}) as any
   const [buttonText, setButtonText] = useState('Regjistrohu')
@@ -117,20 +105,12 @@ export default function RegisterForm() {
       tempErrors['longLastName'] = true
     }
 
-    if (age.length === 0) {
+    if (age === undefined) {
       isValid = false
       tempErrors['age'] = true
-    } else if (!ages.includes(age)) {
+    } else if (age < 18 || age > 29) {
       isValid = false
       tempErrors['invalidAge'] = true
-    }
-
-    if (phone.length === 0) {
-      isValid = false
-      tempErrors['phone'] = true
-    } else if (!phoneFormat.test(phone)) {
-      isValid = false
-      tempErrors['phone'] = true
     }
 
     if (email.length === 0) {
@@ -141,19 +121,18 @@ export default function RegisterForm() {
       tempErrors['correctEmail'] = true
     }
 
-    if (birthPlace.length === 0) {
+    if (date.length === 0) {
       isValid = false
-      tempErrors['birthPlace'] = true
-    }
-
-    if (education.length === 0) {
-      isValid = false
-      tempErrors['education'] = true
+      tempErrors['date'] = true
     }
 
     setErrors({ ...tempErrors })
 
     return isValid
+  }
+
+  const dateHandler = (e: any) => {
+    setDate(e)
   }
 
   const handleSubmit = async (e: any) => {
@@ -173,11 +152,8 @@ export default function RegisterForm() {
           firstName,
           lastName,
           age,
-          phone,
-          email,
-          birthPlace,
-          education,
-          profession
+          date,
+          email
         })
       })
 
@@ -190,28 +166,10 @@ export default function RegisterForm() {
           firstName,
           lastName,
           age,
-          phone,
-          email,
-          birthPlace,
-          education,
-          profession
+          date,
+          email
         })
       })
-
-      // const data = await db_res.json()
-      // console.log(data)
-
-      // console.table(
-      //   JSON.stringify({
-      //     firstName,
-      //     lastName,
-      //     phone,
-      //     email,
-      //     address,
-      //     education,
-      //     profession
-      //   })
-      // )
 
       const { error } = await res.json()
 
@@ -221,12 +179,9 @@ export default function RegisterForm() {
 
         setFirstName('')
         setLastName('')
-        setAge('')
-        setPhone('')
+        setAge(undefined)
+        setDate([])
         setEmail('')
-        setBirthPlace('')
-        setEducation('')
-        setProfession('')
 
         return
       }
@@ -236,17 +191,14 @@ export default function RegisterForm() {
 
       setFirstName('')
       setLastName('')
-      setAge('')
-      setPhone('')
+      setAge(undefined)
+      setDate([])
       setEmail('')
-      setBirthPlace('')
-      setEducation('')
-      setProfession('')
 
       return
     } else if (
       isValidForm === false &&
-      ['correctEmail', 'correctPhone'].includes(Object.keys(errors)[0])
+      ['correctEmail'].includes(Object.keys(errors)[0])
     ) {
       showErrorsToast()
       setButtonText('Regjistrohu')
@@ -333,68 +285,6 @@ export default function RegisterForm() {
           </Box>
           <Box w={'100%'} display={'flex'} flexDir={'column'}>
             <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'age'}>
-                Mosha: <Asterisk />
-              </FormLabel>
-              <Input
-                borderColor={'goblinGreen'}
-                _hover={{ borderColor: 'oliveGreen' }}
-                focusBorderColor={'goblinGreen'}
-                placeholder={'20'}
-                _placeholder={{ color: 'oliveGreen', opacity: 1 }}
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                isInvalid={errors['age'] || errors['invalidAge']}
-              />
-              {errors['age'] ? (
-                <FormHelperText color={'goblinGreen'}>
-                  Ju lutem shkruani moshen tuaj.
-                </FormHelperText>
-              ) : errors['invalidAge'] ? (
-                <FormHelperText color={'goblinGreen'}>
-                  Mosha juaj nuk mund të jetë më e vogël se 15 dhe më e madhe se
-                  29.
-                </FormHelperText>
-              ) : null}
-            </Box>
-            <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'phone'}>
-                Numër telefoni: <Asterisk />
-              </FormLabel>
-              <InputGroup>
-                <InputLeftAddon
-                  border={'1px'}
-                  borderColor={'goblinGreen'}
-                  _hover={{ borderColor: 'oliveGreen' }}
-                  bg={'oliveGreen'}
-                  fontFamily={'Montserrat'}
-                  color={'goblinGreen'}
-                >
-                  +355
-                </InputLeftAddon>
-                <Input
-                  borderColor={'goblinGreen'}
-                  _hover={{ borderColor: 'oliveGreen' }}
-                  focusBorderColor={'goblinGreen'}
-                  placeholder={'069 123 4567'}
-                  _placeholder={{ color: 'oliveGreen', opacity: 1 }}
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  isInvalid={errors['phone']}
-                />
-              </InputGroup>
-              {errors['phone'] && (
-                <FormHelperText color={'goblinGreen'}>
-                  Ju lutem shkruani numrin tuaj telefoni.
-                </FormHelperText>
-              )}
-              {errors['correctPhone'] && (
-                <FormHelperText color={'goblinGreen'}>
-                  Ju lutem shkruani numrin tuaj telefoni në formatin e duhur.
-                </FormHelperText>
-              )}
-            </Box>
-            <Box w={'inherit'} px={5} pt={2}>
               <FormLabel htmlFor={'email'}>
                 Email: <Asterisk />
               </FormLabel>
@@ -419,64 +309,110 @@ export default function RegisterForm() {
                 </FormHelperText>
               )}
             </Box>
+
             <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'vendlindja'}>
-                Vendlindja: <Asterisk />
+              <FormLabel htmlFor={'age'}>
+                Mosha: <Asterisk />
               </FormLabel>
               <Input
                 borderColor={'goblinGreen'}
                 _hover={{ borderColor: 'oliveGreen' }}
                 focusBorderColor={'goblinGreen'}
-                placeholder={'Tiranë'}
+                placeholder={'20'}
                 _placeholder={{ color: 'oliveGreen', opacity: 1 }}
-                value={birthPlace}
-                onChange={(e) => setBirthPlace(e.target.value)}
-                isInvalid={errors['birthPlace']}
+                value={age}
+                onChange={(e) => setAge(Number(e.target.value))}
+                isInvalid={errors['age'] || errors['invalidAge']}
               />
-              {errors['birthPlace'] && (
+              {errors['age'] ? (
                 <FormHelperText color={'goblinGreen'}>
-                  Ju lutem shkruani vendlindjen tuaj.
+                  Ju lutem shkruani moshen tuaj.
+                </FormHelperText>
+              ) : errors['invalidAge'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Mosha juaj nuk mund të jetë më e vogël se 15 dhe më e madhe se
+                  29.
+                </FormHelperText>
+              ) : null}
+            </Box>
+
+            <Box w={'inherit'} px={5} pt={2}>
+              <FormLabel htmlFor={'age'}>
+                Data: <Asterisk />
+              </FormLabel>
+              <Select<DateOptions, true>
+                options={[
+                  {
+                    label: '8 December 2022 - 10 December 2022',
+                    value: '08-12-2022 - 10-12-2022'
+                  },
+                  {
+                    label:
+                      '11 December 2022 - 17 December 2022 - 18 December 2022',
+                    value: '11-12-2022 - 17-12-2022 - 18-12-2022'
+                  }
+                ]}
+                isInvalid={errors['date']}
+                focusBorderColor={'goblinGreen'}
+                id={'date'}
+                placeholder={'Zgjidhni datën'}
+                selectedOptionColor={'goblinGreen'}
+                value={date}
+                onChange={(e) => dateHandler(e)}
+                chakraStyles={{
+                  dropdownIndicator: (
+                    prev,
+                    { selectProps: { menuIsOpen } }
+                  ) => ({
+                    ...prev,
+                    '> svg': {
+                      transitionDuration: 'normal',
+                      transform: `rotate(${menuIsOpen ? 180 : 0}deg)`
+                    }
+                  }),
+                  option: (prev, { isFocused }) => ({
+                    ...prev,
+                    backgroundColor: isFocused ? 'orange' : '#8f987d',
+                    color: isFocused ? '#ffffff' : undefined
+                  }),
+                  menu: (prev) => ({
+                    ...prev,
+                    background: '#8f987d',
+                    color: '#3e503c',
+                    border: '1px solid #3e503c',
+                    borderRadius: 'lg',
+                    boxShadow: 'none',
+                    outline: 'none'
+                  }),
+                  menuList: (prev) => ({
+                    ...prev,
+                    padding: 0
+                  }),
+                  control: (prev, { isFocused }) => ({
+                    ...prev,
+                    borderColor: isFocused ? 'oliveGreen' : 'goblinGreen',
+                    boxShadow: 'none',
+                    '&:hover': {
+                      borderColor: isFocused ? 'goblinGreen' : 'oliveGreen'
+                    }
+                  }),
+                  placeholder: (prev) => ({
+                    ...prev,
+                    color: 'oliveGreen'
+                  }),
+                  singleValue: (prev) => ({
+                    ...prev,
+                    color: 'oliveGreen'
+                  })
+                }}
+              />
+              {errors['date'] && (
+                <FormHelperText color={'goblinGreen'}>
+                  Ju lutem zgjidhni datën.
                 </FormHelperText>
               )}
             </Box>
-            <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'arsimimi'}>
-                Arsimimi: <Asterisk />
-              </FormLabel>
-              <Input
-                borderColor={'goblinGreen'}
-                _hover={{ borderColor: 'oliveGreen' }}
-                focusBorderColor={'goblinGreen'}
-                placeholder={'Master in Holistic Therapy'}
-                _placeholder={{ color: 'oliveGreen', opacity: 1 }}
-                value={education}
-                onChange={(e) => setEducation(e.target.value)}
-                isInvalid={errors['education']}
-              />
-              {errors['education'] && (
-                <FormHelperText color={'goblinGreen'}>
-                  Ju lutem shkruani arsimimin tuaj.
-                </FormHelperText>
-              )}
-            </Box>
-            <Box w={'inherit'} px={5} pt={2}>
-              <FormLabel htmlFor={'profesioni'}>
-                Profesioni{' '}
-                <span style={{ verticalAlign: 'sub', fontSize: '10px' }}>
-                  (opsionale)
-                </span>
-                :
-              </FormLabel>
-              <Input
-                borderColor={'goblinGreen'}
-                _hover={{ borderColor: 'oliveGreen' }}
-                focusBorderColor={'goblinGreen'}
-                placeholder={'Holistic Therapist'}
-                _placeholder={{ color: 'oliveGreen', opacity: 1 }}
-                value={profession}
-                onChange={(e) => setProfession(e.target.value)}
-              />
-            </Box>
+
             <Box
               w={'inherit'}
               px={5}
@@ -495,6 +431,17 @@ export default function RegisterForm() {
                 {buttonText}
               </Button>
             </Box>
+            {/* <Box className={'atcb'}>
+              {'{'}
+              "name":"Add the title of your event", "description":"A nice
+              description does not hurt", "startDate":"2022-02-21",
+              "endDate":"2022-03-24", "startTime":"10:13", "endTime":"17:57",
+              "location":"Somewhere over the rainbow", "label":"Add to
+              Calendar", "options":[ "Apple", "Google", "iCal", "Microsoft365",
+              "Outlook.com", "Yahoo" ], "timeZone":"Europe/Berlin",
+              "iCalFileName":"Reminder-Event"
+              {'}'}
+            </Box> */}
           </Box>
         </FormControl>
       </form>

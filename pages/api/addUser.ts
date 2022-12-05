@@ -3,16 +3,7 @@ import User from '../../models/user'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 async function addUser(req: NextApiRequest, res: NextApiResponse) {
-  const {
-    firstName,
-    lastName,
-    age,
-    phone,
-    email,
-    birthPlace,
-    education,
-    profession
-  } = req.body
+  const { firstName, lastName, age, date, email } = req.body
 
   await connectMongoDB()
 
@@ -20,11 +11,7 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
     firstName,
     lastName,
     age,
-    phone,
-    email,
-    birthPlace,
-    education,
-    profession
+    email
   })
 
   res.status(200).json({ message: 'User created successfully' })
