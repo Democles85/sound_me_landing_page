@@ -1,6 +1,6 @@
 import { Box, Button, Icon, Link, Text } from '@chakra-ui/react'
 import ParagraphHeader from './ParagraphHeader'
-import { AiFillInstagram } from 'react-icons/ai'
+import { AiFillInstagram, AiOutlineWhatsApp } from 'react-icons/ai'
 import { MdMail, MdFacebook } from 'react-icons/md'
 
 export default function ContactUs() {
@@ -9,6 +9,20 @@ export default function ContactUs() {
       <ParagraphHeader>Kontakti:</ParagraphHeader>
 
       <Box display={'flex'} flexDir={{ base: 'column', md: 'row', lg: 'row' }}>
+        <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
+          <a href="https://wa.me/34671145400" target="__blank">
+            <Button
+              bg={'rgba(143, 152, 125, 0.3)'}
+              color={'goblinGreen'}
+              _hover={{ bg: 'oliveGreen', color: '#fff' }}
+              _focus={{ boxShadow: 'none' }}
+              leftIcon={<Icon as={AiOutlineWhatsApp} />}
+            >
+              @soundmewhatsapp
+            </Button>
+          </a>
+        </Box>
+
         <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
           <a href="https://www.instagram.com/soundmeyouth/" target="__blank">
             <Button
