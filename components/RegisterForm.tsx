@@ -420,6 +420,10 @@ export default function RegisterForm() {
                   })
                 }}
               />
+              <FormHelperText color={'goblinGreen'}>
+                Ju lutem zgjidhni datën. Ju mund të zgjidhni më shumë se një
+                datë.
+              </FormHelperText>
               {errors['date'] && (
                 <FormHelperText color={'goblinGreen'}>
                   Ju lutem zgjidhni datën.
