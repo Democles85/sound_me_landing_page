@@ -369,7 +369,7 @@ export default function RegisterForm() {
                 isInvalid={errors['date']}
                 focusBorderColor={'goblinGreen'}
                 id={'date'}
-                placeholder={'Zgjidhni datën'}
+                placeholder={'Zgjidhni datën / datat'}
                 selectedOptionColor={'goblinGreen'}
                 value={date}
                 onChange={(e) => dateHandler(e)}
@@ -420,9 +420,8 @@ export default function RegisterForm() {
                   })
                 }}
               />
-              <FormHelperText color={'goblinGreen'}>
-                Ju lutem zgjidhni datën. Ju mund të zgjidhni më shumë se një
-                datë.
+              <FormHelperText color={'goblinGreen'} fontStyle={'italic'}>
+                Ju mund të zgjidhni më shumë se një datë.
               </FormHelperText>
               {errors['date'] && (
                 <FormHelperText color={'goblinGreen'}>
