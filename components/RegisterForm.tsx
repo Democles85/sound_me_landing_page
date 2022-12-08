@@ -8,15 +8,12 @@ import {
   FormLabel,
   Input
 } from '@chakra-ui/react'
+import { Select, OptionBase } from 'chakra-react-select'
 // React Toastify
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 // React
-import { useEffect, useMemo, useState } from 'react'
-// ATCB
-import { atcb_init } from 'add-to-calendar-button'
-import 'add-to-calendar-button/assets/css/atcb.css'
-import { Select, OptionBase } from 'chakra-react-select'
+import { useState } from 'react'
 
 const Asterisk = () => <span style={{ color: '#3e503c' }}>*</span>
 
@@ -27,9 +24,13 @@ interface DateOptions extends OptionBase {
 
 export default function RegisterForm() {
   const emailFormat: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  // phone number regex for albania
+  const phoneNumberFormat: RegExp =
+    /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
   const [age, setAge] = useState<number>()
   const [date, setDate] = useState<DateOptions[]>([])
   const [email, setEmail] = useState('')
@@ -115,6 +116,14 @@ export default function RegisterForm() {
       tempErrors['invalidAge'] = true
     }
 
+    if (phoneNumber.length === 0) {
+      isValid = false
+      tempErrors['phoneNumber'] = true
+    } else if (!phoneNumber.match(phoneNumberFormat)) {
+      isValid = false
+      tempErrors['correctPhoneNumber'] = true
+    }
+
     if (email.length === 0) {
       isValid = false
       tempErrors['email'] = true
@@ -154,6 +163,7 @@ export default function RegisterForm() {
           firstName,
           lastName,
           age,
+          phoneNumber,
           date,
           email
         })
@@ -168,6 +178,7 @@ export default function RegisterForm() {
           firstName,
           lastName,
           age,
+          phoneNumber,
           date,
           email
         })
@@ -182,6 +193,7 @@ export default function RegisterForm() {
         setFirstName('')
         setLastName('')
         setAge(undefined)
+        setPhoneNumber('')
         setDate([])
         setEmail('')
 
@@ -194,6 +206,7 @@ export default function RegisterForm() {
       setFirstName('')
       setLastName('')
       setAge(undefined)
+      setPhoneNumber('')
       setDate([])
       setEmail('')
 
@@ -334,6 +347,33 @@ export default function RegisterForm() {
                 <FormHelperText color={'goblinGreen'}>
                   Mosha juaj nuk mund të jetë më e vogël se 15 dhe më e madhe se
                   29.
+                </FormHelperText>
+              ) : null}
+            </Box>
+
+            <Box w={'inherit'} px={5} pt={2}>
+              <FormLabel htmlFor={'phone number'}>
+                Numri i telefonit: <Asterisk />
+              </FormLabel>
+              <Input
+                borderColor={'goblinGreen'}
+                _hover={{ borderColor: 'oliveGreen' }}
+                focusBorderColor={'goblinGreen'}
+                placeholder={'+355 69 123 4567'}
+                _placeholder={{ color: 'oliveGreen', opacity: 1 }}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                isInvalid={
+                  errors['phoneNumber'] || errors['correctPhoneNumber']
+                }
+              />
+              {errors['phoneNumber'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Ju lutem shkruani numrin tuaj të telefonit.
+                </FormHelperText>
+              ) : errors['correctPhoneNumber'] ? (
+                <FormHelperText color={'goblinGreen'}>
+                  Numri juaj i telefonit nuk është në formatin e duhur.
                 </FormHelperText>
               ) : null}
             </Box>
