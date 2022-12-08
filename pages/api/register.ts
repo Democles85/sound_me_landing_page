@@ -25,6 +25,20 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
     `
     },
     {
+      to: 'colomboresonate@gmail.com',
+      from: 'democleschannel28@gmail.com',
+      subject: 'New Registration',
+      html: `
+    <div style="font-size: 16px;">
+      <strong>First Name:</strong> ${firstName}<br />
+      <strong>Last Name:</strong> ${lastName}<br />
+      <strong>Age: </strong> ${age}<br />
+      <strong>Dates: </strong> ${dateLabelMap} <br />
+      <strong>Email:</strong> ${email}<br />
+    </div>
+    `
+    },
+    {
       to: email,
       from: 'soundme01@gmail.com',
       subject: 'Faleminderit për regjistrimin',
