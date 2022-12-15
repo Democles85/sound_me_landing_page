@@ -22,9 +22,13 @@ interface DateOptions extends OptionBase {
   value: string
 }
 
+interface TimeOptions extends OptionBase {
+  label: string
+  value: string
+}
+
 export default function RegisterForm() {
   const emailFormat: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  // phone number regex for albania
   const phoneNumberFormat: RegExp =
     /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/
 
@@ -33,6 +37,7 @@ export default function RegisterForm() {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [age, setAge] = useState<number>()
   const [date, setDate] = useState<DateOptions[]>([])
+  const [time, setTime] = useState<TimeOptions[]>([])
   const [email, setEmail] = useState('')
 
   // console.log(date.map((d) => d.label))
@@ -137,6 +142,11 @@ export default function RegisterForm() {
       tempErrors['date'] = true
     }
 
+    if (time.length === 0) {
+      isValid = false
+      tempErrors['time'] = true
+    }
+
     setErrors({ ...tempErrors })
 
     return isValid
@@ -144,6 +154,10 @@ export default function RegisterForm() {
 
   const dateHandler = (e: any) => {
     setDate(e)
+  }
+
+  const timeHandler = (e: any) => {
+    setTime(e)
   }
 
   const handleSubmit = async (e: any) => {
@@ -165,6 +179,7 @@ export default function RegisterForm() {
           age,
           phoneNumber,
           date,
+          time,
           email
         })
       })
@@ -180,6 +195,7 @@ export default function RegisterForm() {
           age,
           phoneNumber,
           date,
+          time,
           email
         })
       })
@@ -195,6 +211,7 @@ export default function RegisterForm() {
         setAge(undefined)
         setPhoneNumber('')
         setDate([])
+        setTime([])
         setEmail('')
 
         return
@@ -208,12 +225,14 @@ export default function RegisterForm() {
       setAge(undefined)
       setPhoneNumber('')
       setDate([])
+      setTime([])
       setEmail('')
 
       return
     } else if (
       isValidForm === false &&
-      ['correctEmail'].includes(Object.keys(errors)[0])
+      ['correctEmail'].includes(Object.keys(errors)[0]) &&
+      ['correctPhoneNumber'].includes(Object.keys(errors)[0])
     ) {
       showErrorsToast()
       setButtonText('Regjistrohu')
@@ -385,18 +404,18 @@ export default function RegisterForm() {
               <Select<DateOptions, true>
                 isMulti
                 options={[
-                  {
-                    label: '8 December 2022',
-                    value: '08-12-2022'
-                  },
-                  {
-                    label: '10 December 2022',
-                    value: '10-12-2022'
-                  },
-                  {
-                    label: '11 December 2022',
-                    value: '11-12-2022'
-                  },
+                  // {
+                  //   label: '8 December 2022',
+                  //   value: '08-12-2022'
+                  // },
+                  // {
+                  //   label: '10 December 2022',
+                  //   value: '10-12-2022'
+                  // },
+                  // {
+                  //   label: '11 December 2022',
+                  //   value: '11-12-2022'
+                  // },
                   {
                     label: '17 December 2022',
                     value: '17-12-2022'
@@ -460,12 +479,86 @@ export default function RegisterForm() {
                   })
                 }}
               />
-              <FormHelperText color={'goblinGreen'} fontStyle={'italic'}>
-                Ju mund të zgjidhni më shumë se një datë.
-              </FormHelperText>
               {errors['date'] && (
                 <FormHelperText color={'goblinGreen'}>
                   Ju lutem zgjidhni datën.
+                </FormHelperText>
+              )}
+            </Box>
+
+            <Box w={'inherit'} px={5} pt={2}>
+              <FormLabel htmlFor={'age'}>
+                Ora: <Asterisk />
+              </FormLabel>
+              <Select<DateOptions, true>
+                isMulti
+                options={[
+                  {
+                    label: '3:00 PM - 5:00 PM',
+                    value: '3:00 PM - 5:00 PM'
+                  },
+                  {
+                    label: '5:00 PM - 7:00 PM',
+                    value: '5:00 PM - 7:00 PM'
+                  }
+                ]}
+                isInvalid={errors['time']}
+                focusBorderColor={'goblinGreen'}
+                id={'time'}
+                placeholder={'Zgjidhni orën / orët'}
+                selectedOptionColor={'goblinGreen'}
+                value={time}
+                onChange={(e) => timeHandler(e)}
+                chakraStyles={{
+                  dropdownIndicator: (
+                    prev,
+                    { selectProps: { menuIsOpen } }
+                  ) => ({
+                    ...prev,
+                    '> svg': {
+                      transitionDuration: 'normal',
+                      transform: `rotate(${menuIsOpen ? 180 : 0}deg)`
+                    }
+                  }),
+                  option: (prev, { isFocused }) => ({
+                    ...prev,
+                    backgroundColor: isFocused ? 'goblinGreen' : 'marbleWhite',
+                    color: isFocused ? '#ffffff' : undefined
+                  }),
+                  menu: (prev) => ({
+                    ...prev,
+                    background: 'marbleWhite',
+                    color: '#3e503c',
+                    border: '1px solid #3e503c',
+                    borderRadius: 'lg',
+                    boxShadow: 'none',
+                    outline: 'none'
+                  }),
+                  menuList: (prev) => ({
+                    ...prev,
+                    padding: 0
+                  }),
+                  control: (prev, { isFocused }) => ({
+                    ...prev,
+                    borderColor: isFocused ? 'oliveGreen' : 'goblinGreen',
+                    boxShadow: 'none',
+                    '&:hover': {
+                      borderColor: isFocused ? 'goblinGreen' : 'oliveGreen'
+                    }
+                  }),
+                  placeholder: (prev) => ({
+                    ...prev,
+                    color: 'oliveGreen'
+                  }),
+                  singleValue: (prev) => ({
+                    ...prev,
+                    color: 'oliveGreen'
+                  })
+                }}
+              />
+              {errors['time'] && (
+                <FormHelperText color={'goblinGreen'}>
+                  Ju lutem zgjidhni orèn.
                 </FormHelperText>
               )}
             </Box>

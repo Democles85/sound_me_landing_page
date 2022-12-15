@@ -24,6 +24,10 @@ const UserSchema = new Schema({
   date: {
     type: Object,
     required: false
+  },
+  time: {
+    type: Object,
+    required: false
   }
 })
 

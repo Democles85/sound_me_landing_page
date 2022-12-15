@@ -3,7 +3,7 @@ import User from '../../models/user'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 async function addUser(req: NextApiRequest, res: NextApiResponse) {
-  const { firstName, lastName, age, phoneNumber, date, email } = req.body
+  const { firstName, lastName, age, phoneNumber, date, time, email } = req.body
 
   await connectMongoDB()
 
@@ -13,6 +13,7 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
     age,
     phoneNumber,
     date,
+    time,
     email
   })
 
