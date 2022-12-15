@@ -558,7 +558,7 @@ export default function RegisterForm() {
               />
               {errors['time'] && (
                 <FormHelperText color={'goblinGreen'}>
-                  Ju lutem zgjidhni orèn.
+                  Ju lutem zgjidhni orën.
                 </FormHelperText>
               )}
             </Box>
