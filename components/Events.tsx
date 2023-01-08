@@ -32,7 +32,7 @@ export default function Events() {
           borderRadius={'lg'}
         >
           <Image
-            src={'/images/banner_2.png'}
+            src={'/images/banner.png'}
             alt={'Balance of Mind'}
             w={'100%'}
             borderRadius={{
