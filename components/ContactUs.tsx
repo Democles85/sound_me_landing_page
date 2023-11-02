@@ -1,7 +1,7 @@
 import { Box, Button, Icon, Link, Text } from '@chakra-ui/react'
-import ParagraphHeader from './ParagraphHeader'
 import { AiFillInstagram, AiOutlineWhatsApp } from 'react-icons/ai'
-import { MdMail, MdFacebook } from 'react-icons/md'
+import { MdFacebook, MdMail } from 'react-icons/md'
+import ParagraphHeader from './ParagraphHeader'
 
 export default function ContactUs() {
   return (
@@ -55,7 +55,7 @@ export default function ContactUs() {
         </Box>
 
         <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
-          <Link href="mailto:soundme01@gmail.com" target="_blank">
+          <Link href="mailto:colomboresonate@gmail.com" target="_blank">
             <Button
               bg={'rgba(143, 152, 125, 0.3)'}
               color={'goblinGreen'}
