@@ -4,14 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
-  const { firstName, lastName, age, phoneNumber, date, time, email } = req.body
-  const dateLabelMap = date.map((d: any) => {
-    return d.label
-  })
-
-  const timeLabelMap = time.map((t: any) => {
-    return t.label
-  })
+  const { firstName, lastName, age, phoneNumber, email } = req.body
 
   const messages = [
     {
@@ -24,8 +17,6 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
       <strong>Phone Number: </strong> ${phoneNumber}<br />
-      <strong>Dates: </strong> ${dateLabelMap} <br />
-      <strong>Hours: </strong> ${timeLabelMap} <br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `
@@ -40,8 +31,6 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
       <strong>Phone Number: </strong> ${phoneNumber}<br />
-      <strong>Dates: </strong> ${dateLabelMap} <br />
-      <strong>Hours: </strong> ${timeLabelMap} <br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `
@@ -59,8 +48,6 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
       <strong>Phone Number: </strong> ${phoneNumber}<br />
-      <strong>Dates: </strong> ${dateLabelMap} <br />
-      <strong>Hours: </strong> ${timeLabelMap} <br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `

@@ -1,14 +1,14 @@
 import {
   Box,
-  Text,
-  Image,
   Button,
-  useDisclosure,
-  Icon,
-  StatDownArrow,
-  Fade,
   Collapse,
-  Divider
+  Divider,
+  Fade,
+  Icon,
+  Image,
+  StatDownArrow,
+  Text,
+  useDisclosure
 } from '@chakra-ui/react'
 import ParagraphHeader from './ParagraphHeader'
 
@@ -32,7 +32,7 @@ export default function Events() {
           borderRadius={'lg'}
         >
           <Image
-            src={'/images/banner.png'}
+            src={'/images/sound_me_event_1.jpg'}
             alt={'Balance of Mind'}
             w={'100%'}
             borderRadius={{
@@ -40,7 +40,7 @@ export default function Events() {
               md: '10px 0 0 10px',
               lg: '10px 0 0 10px'
             }}
-            boxShadow={'0 0 0 5px rgba(143, 152, 125, 0.8)'}
+            boxShadow={'0 0 0 5px rgba(190, 144, 73, .8)'}
           />
         </Box>
 
