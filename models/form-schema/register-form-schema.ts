@@ -20,7 +20,7 @@ export const schema = z.object({
     .string()
     .regex(
       /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm,
-      'Ju lutem vendosni një adresë të saktë email-iu'
+      'Ju lutem vendosni një adresë të saktë email-i'
     )
     .email('Ju lutem vendosni një adresë email-i')
 })
