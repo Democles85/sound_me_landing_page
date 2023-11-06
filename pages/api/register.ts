@@ -16,7 +16,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>First Name:</strong> ${firstName}<br />
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
-      <strong>Phone Number: </strong> ${phoneNumber}<br />
+      <strong>Phone Number: </strong> +355 ${phoneNumber}<br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `
@@ -30,7 +30,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>First Name:</strong> ${firstName}<br />
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
-      <strong>Phone Number: </strong> ${phoneNumber}<br />
+      <strong>Phone Number: </strong> +355 ${phoneNumber}<br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `
@@ -47,7 +47,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       <strong>First Name:</strong> ${firstName}<br />
       <strong>Last Name:</strong> ${lastName}<br />
       <strong>Age: </strong> ${age}<br />
-      <strong>Phone Number: </strong> ${phoneNumber}<br />
+      <strong>Phone Number: </strong> +355 ${phoneNumber}<br />
       <strong>Email:</strong> ${email}<br />
     </div>
     `
