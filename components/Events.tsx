@@ -1,3 +1,4 @@
+import { DownloadIcon } from '@chakra-ui/icons'
 import {
   Box,
   Button,
@@ -8,6 +9,8 @@ import {
   Image,
   StatDownArrow,
   Text,
+  Tooltip,
+  background,
   useDisclosure
 } from '@chakra-ui/react'
 import ParagraphHeader from './ParagraphHeader'
@@ -20,11 +23,17 @@ export default function Events() {
       <Box>
         <ParagraphHeader>Eventet:</ParagraphHeader>
       </Box>
-      <Box display={'flex'} justifyContent={'center'}>
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        flexDir={'column'}
+        alignItems={'center'}
+      >
         <Box
           display={'flex'}
           justifyContent={'center'}
           alignItems={'center'}
+          position={'relative'}
           flexDir={{ base: 'column', md: 'row', lg: 'row' }}
           // bg={'rgba(143, 152, 125, 0.2)'}
           p={{ base: '1rem', md: '1rem', lg: '1rem' }}
@@ -43,53 +52,23 @@ export default function Events() {
             boxShadow={'0 0 0 5px rgba(190, 144, 73, .8)'}
           />
         </Box>
-
-        {/* <Box
-          pl={{ base: '1rem', md: '3rem', lg: '3rem' }}
-          w={{ base: '95%', md: '100%', lg: '80%' }}
-          display={'flex'}
-          flexDir={'column'}
-          mt={{ base: '1rem', md: '0', lg: '0' }}
-        >
-          <Text
-            fontWeight={'bold'}
-            fontSize={{ base: '1.2rem', md: '1.4rem', lg: '1.625rem' }}
-            color={'#393e41'}
+        <Tooltip label={'Sharko Eventet'} aria-label={'Shkarko Eventet'}>
+          <Button
+            as={'a'}
+            href={'/docs/SoundMeEvents.pdf'}
+            download={'/docs/SoundMeEvents.pdf'}
+            background={'rgba(200, 161, 100, 0.25)'}
+            _hover={{ background: 'rgba(255, 255, 255, 0.5)' }}
+            border={'1px solid rgb(200, 161, 100)'}
+            size={{ base: 'sm', md: 'md', lg: 'lg' }}
+            className={'flex items-center justify-center mt-2'}
+            padding={'0.5rem'}
           >
-            THE BALANCE OF YOUR MIND -{' '}
-            <span
-              style={{
-                fontStyle: 'italic',
-                // textDecoration: 'underline',
-                fontWeight: '500'
-              }}
-            >
-              Live Event
-            </span>
-          </Text>
-          <Box pr={{ base: '0', md: '0', lg: '3rem' }}>
-            <Divider style={{ border: '2px solid #393e41' }} my={2} />
-          </Box>
-          <Box
-            fontSize={{ base: '1rem', md: '1.2rem', lg: '1.2rem' }}
-            my={{ base: '1rem', md: '0', lg: '0' }}
-          >
-            <Text>Coming Soon... </Text>
-          </Box>
-          <Box
-            fontSize={{ base: '1rem', md: '1.2rem', lg: '1.2rem' }}
-            my={{ base: '1rem', md: '0', lg: '0' }}
-            display={'flex'}
-            h={'100%'}
-            justifyContent={'flex-end'}
-          >
-            <Text alignSelf={'end'}>
-              <a>Location: Rruga Abdyl Frashëri, Tiranë</a>
-            </Text>
-          </Box>
-        </Box> */}
+            <DownloadIcon name={'download'} className={'mr-2'} /> Shkarko
+            Eventet
+          </Button>
+        </Tooltip>
       </Box>
-      {/* <Divider style={{ borderColor: '#000' }} mt={'1rem'} /> */}
     </Box>
   )
 }
