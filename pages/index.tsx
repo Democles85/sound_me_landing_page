@@ -91,10 +91,9 @@ const Home: NextPage = () => {
               <DownloadIcon name={'download'} />
             </Button>
           </Tooltip>
-          <IframeResizer
+          <iframe
             src={`${pdfSrc}#toolbar=0`}
             className="h-[400px] md:h-[700px]"
-            heightCalculationMethod="lowestElement"
             style={{
               borderRadius: '10px',
               border: '2px solid',
