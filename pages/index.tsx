@@ -1,4 +1,13 @@
-import { Box, ListItem, Text, UnorderedList } from '@chakra-ui/react'
+import { DownloadIcon } from '@chakra-ui/icons'
+import {
+  Box,
+  Button,
+  ListItem,
+  Text,
+  Tooltip,
+  UnorderedList
+} from '@chakra-ui/react'
+import IframeResizer from 'iframe-resizer-react'
 import type { NextPage } from 'next'
 import {
   ContactUs,
@@ -10,6 +19,8 @@ import {
 } from '../components'
 
 const Home: NextPage = () => {
+  const pdfSrc = '/docs/PasaportaEnergjitike.pdf'
+
   return (
     <Box>
       <Box pb={'2rem'}>
@@ -56,7 +67,47 @@ const Home: NextPage = () => {
         </Box>
       </Box>
 
-      <Box pb={'2rem'}>
+      <Box className="py-2">
+        <ParagraphHeader>Pasaporta Energjitike: </ParagraphHeader>
+        <Box position={'relative'}>
+          <Tooltip
+            label={'Shkarko Pasaporten Energjitike'}
+            aria-label={'Shkarko Pasaporten Energjitike'}
+          >
+            <Button
+              as={'a'}
+              href={pdfSrc}
+              download={'sixhei_tartari_cv.pdf'}
+              borderRadius={'full'}
+              position={'absolute'}
+              top={'-1rem'}
+              right={'-1rem'}
+              zIndex={1}
+              size={{ base: 'sm', md: 'md', lg: 'lg' }}
+              padding={'0.5rem'}
+              height={'40px'}
+              width={'40px'}
+            >
+              <DownloadIcon name={'download'} />
+            </Button>
+          </Tooltip>
+          <IframeResizer
+            src={`${pdfSrc}#toolbar=0`}
+            className="h-[400px] md:h-[700px]"
+            heightCalculationMethod="lowestElement"
+            style={{
+              borderRadius: '10px',
+              border: '2px solid',
+              borderColor: 'olive',
+              boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+              width: '1px',
+              minWidth: '100%'
+            }}
+          />
+        </Box>
+      </Box>
+
+      <Box className="py-2">
         <Events />
       </Box>
 
