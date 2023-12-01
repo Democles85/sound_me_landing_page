@@ -27,7 +27,7 @@ const Home: NextPage = () => {
         <Paragraph>
           Sound Me është themeluar nga Pëllumb Mukaj ~Colombo, si një hapësirë
           autentike ku të gjithë të rijntë të suportohen dhe mbështeten në
-          rrugetimin e tyre.
+          rrugetimin e tyre <b>falas</b>.
         </Paragraph>
       </Box>
       <Box pb={'2rem'}>
