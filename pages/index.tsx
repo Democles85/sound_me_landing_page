@@ -68,7 +68,11 @@ const Home: NextPage = () => {
 
       <Box className="py-2">
         <ParagraphHeader>Pasaporta Energjitike: </ParagraphHeader>
-        <Box position={'relative'}>
+        <Paragraph>
+          Pasaportat janë krijuar nga themeluesi i <b>Sound Me</b>. Ato janë
+          dizenjuara si një pasqyrë që ju ti përdorni në jetën tuaj.
+        </Paragraph>
+        <Box className="relative py-4">
           <Tooltip
             label={'Shkarko Pasaporten Energjitike'}
             aria-label={'Shkarko Pasaporten Energjitike'}
