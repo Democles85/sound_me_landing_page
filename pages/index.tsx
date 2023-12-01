@@ -7,7 +7,6 @@ import {
   Tooltip,
   UnorderedList
 } from '@chakra-ui/react'
-import IframeResizer from 'iframe-resizer-react'
 import type { NextPage } from 'next'
 import {
   ContactUs,
