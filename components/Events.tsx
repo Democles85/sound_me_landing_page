@@ -1,23 +1,8 @@
 import { DownloadIcon } from '@chakra-ui/icons'
-import {
-  Box,
-  Button,
-  Collapse,
-  Divider,
-  Fade,
-  Icon,
-  Image,
-  StatDownArrow,
-  Text,
-  Tooltip,
-  background,
-  useDisclosure
-} from '@chakra-ui/react'
+import { Box, Button, Image, Tooltip } from '@chakra-ui/react'
 import ParagraphHeader from './ParagraphHeader'
 
 export default function Events() {
-  const { isOpen, onToggle } = useDisclosure()
-
   return (
     <Box>
       <Box>
@@ -35,7 +20,6 @@ export default function Events() {
           alignItems={'center'}
           position={'relative'}
           flexDir={{ base: 'column', md: 'row', lg: 'row' }}
-          // bg={'rgba(143, 152, 125, 0.2)'}
           p={{ base: '1rem', md: '1rem', lg: '1rem' }}
           w={{ base: '100%', md: '60%', lg: '50%' }}
           borderRadius={'lg'}
