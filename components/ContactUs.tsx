@@ -55,7 +55,7 @@ export default function ContactUs() {
         </Box>
 
         <Box px={{ base: 0, md: 2, lg: 4 }} py={{ base: 2, md: 0, lg: 0 }}>
-          <Link href="mailto:colomboresonate@gmail.com" target="_blank">
+          <Link href="mailto:soundmeyouth@gmail.com" target="_blank">
             <Button
               bg={'rgba(143, 152, 125, 0.3)'}
               color={'goblinGreen'}
