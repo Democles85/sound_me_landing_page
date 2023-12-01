@@ -63,7 +63,7 @@ export default function ContactUs() {
               _focus={{ boxShadow: 'none' }}
               leftIcon={<Icon as={MdMail} />}
             >
-              @soundmegmail
+              soundmeyouth@gmail.com
             </Button>
           </Link>
         </Box>
