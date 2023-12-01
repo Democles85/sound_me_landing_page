@@ -2,12 +2,15 @@ import { DownloadIcon } from '@chakra-ui/icons'
 import {
   Box,
   Button,
+  Icon,
   ListItem,
   Text,
   Tooltip,
   UnorderedList
 } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import { AiFillDollarCircle } from 'react-icons/ai'
+import { MdMoney } from 'react-icons/md'
 import {
   ContactUs,
   Events,
@@ -72,7 +75,7 @@ const Home: NextPage = () => {
           Pasaportat janë krijuar nga themeluesi i <b>Sound Me</b>. Ato janë
           dizenjuara si një pasqyrë që ju ti përdorni në jetën tuaj.
         </Paragraph>
-        <Box className="relative py-4">
+        {/* <Box className="relative py-4">
           <Tooltip
             label={'Shkarko Pasaporten Energjitike'}
             aria-label={'Shkarko Pasaporten Energjitike'}
@@ -106,6 +109,36 @@ const Home: NextPage = () => {
               minWidth: '100%'
             }}
           />
+        </Box> */}
+        <Box className="flex items-center justify-around w-full">
+          <Button
+            as={'a'}
+            href={'/docs/SoundMeEvents.pdf'}
+            download={'/docs/SoundMeEvents.pdf'}
+            background={'rgba(200, 161, 100, 0.25)'}
+            _hover={{ background: 'rgba(255, 255, 255, 0.5)' }}
+            border={'1px solid rgb(200, 161, 100)'}
+            size={{ base: 'sm', md: 'md', lg: 'lg' }}
+            className={'flex items-center justify-center mt-2'}
+            padding={'0.5rem'}
+          >
+            <DownloadIcon name={'download'} className={'mr-2'} /> Shkarko
+            Pasaporten Energjitike
+          </Button>
+
+          <Button
+            as={'a'}
+            href={'https://paypal.me/soundmeyouth?country.x=AL&locale.x=en_US'}
+            className={'flex items-center justify-center mt-2'}
+            size={{ base: 'sm', md: 'md', lg: 'lg' }}
+            border={'1px solid rgb(200, 161, 100)'}
+            background={'rgba(255, 255, 255, 0.5)'}
+            _hover={{ background: 'rgba(200, 161, 100, 0.25)' }}
+            padding={'0.5rem'}
+          >
+            <Icon as={AiFillDollarCircle} className={'mr-2'} />
+            Bej nje donacion
+          </Button>
         </Box>
       </Box>
 
