@@ -110,7 +110,7 @@ const Home: NextPage = () => {
             }}
           />
         </Box> */}
-        <Box className="flex-col md:flex items-center justify-around md:justify-center w-full">
+        <Box className="flex items-center justify-center w-full">
           <Button
             as={'a'}
             href={'/docs/SoundMeEvents.pdf'}
@@ -125,7 +125,13 @@ const Home: NextPage = () => {
             <DownloadIcon name={'download'} className={'mr-2'} /> Shkarko
             Pasaporten Energjitike
           </Button>
+        </Box>
 
+        <Paragraph>
+          Sound Me është një Komunitet Holistik që mbështet të rijntë Falas.
+          Mbështetja juaj si donator është një shtyllë e fortë për ne.
+        </Paragraph>
+        <Box className="flex w-full justify-center align-center">
           <Button
             as={'a'}
             href={'https://paypal.me/soundmeyouth?country.x=AL&locale.x=en_US'}
