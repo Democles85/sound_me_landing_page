@@ -110,7 +110,7 @@ const Home: NextPage = () => {
             }}
           />
         </Box> */}
-        <Box className="flex md:flex-col items-center justify-center md:justify-around w-full">
+        <Box className="flex md:flex-col items-center justify-around md:justify-center w-full">
           <Button
             as={'a'}
             href={'/docs/SoundMeEvents.pdf'}
